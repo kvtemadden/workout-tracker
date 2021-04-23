@@ -41,9 +41,7 @@ const workoutSchema = new Schema(
     },
     { toJSON: { virtuals: true } });
 
-// add a virtual property to schema
 workoutSchema.virtual("totalDuration").get(function() {
-    // *reduce* the array of exercises in the schema to the sum of their durations
     return this.exercises.reduce((total, exercise) => {
         return total + exercise.duration
     }, 0);
